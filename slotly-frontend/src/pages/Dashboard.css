@@ -1,0 +1,74 @@
+/* —— Calendar outer container: scales with card width, allows horizontal scrolling —— */
+.calendar-container {
+  width: 100%;           /* fills the parent calendar card’s width */
+  overflow-x: auto;      /* show horizontal scrollbar when content overflows */
+  overflow-y: hidden;    /* hide vertical scrollbar */
+}
+
+/* —— Enforce a minimum width for FullCalendar’s timeGrid table —— */
+.fc .fc-timegrid {
+  min-width: 60rem !important; /* 7 columns × 8rem each + sidebar width */
+}
+
+/* —— Fix each day column to 8rem (no scaling) —— */
+.fc .fc-timegrid-col-frame {
+  width: 8rem !important;
+  min-width: 8rem !important;
+  max-width: 8rem !important;
+}
+
+/* —— Fix each half-hour slot row height to 3rem —— */
+.fc-timegrid-slot {
+  height: 3rem !important;
+}
+
+/* —— Show time labels only on full-hour rows —— */
+.fc-timegrid-slot-lane .fc-timegrid-slot .fc-time {
+  visibility: hidden;
+}
+.fc-timegrid-slot-lane .fc-timegrid-slot:nth-child(2n+1) .fc-time {
+  visibility: visible;
+  font-weight: 600;
+}
+
+/* —— Remove FullCalendar’s default event background and border —— */
+.fc-event-main-frame,
+.fc-timegrid-event-harness .fc-timegrid-event {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* —— Custom event block styling (from code 5) —— */
+.fc-custom-event {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(59, 130, 246, 0.2);
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.1rem;
+  box-sizing: border-box;
+  pointer-events: auto;
+}
+.fc-custom-event .fc-event-title {
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+}
+.fc-custom-event .fc-event-time {
+  font-style: italic;
+  font-size: 0.75rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0.1rem;
+}
+
