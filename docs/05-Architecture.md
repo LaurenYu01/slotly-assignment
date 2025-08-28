@@ -1,3 +1,4 @@
+mermaid
 flowchart TB
     %% --- Client ---
     subgraph Client
@@ -27,3 +28,6 @@ flowchart TB
     Browser --> FE_Local
     FE_Local -->|REST API| BE_Local
     BE_Local --> DB_Local
+
+    
+--- - Frontend uses VITE_API_BASE_URL to connect backend - Backend binds to process.env.PORT in cloud - Secrets stored in Key Vault / env vars - Health check endpoint: /health
