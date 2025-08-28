@@ -4,10 +4,10 @@
 
 ```mermaid
 flowchart LR
-    User[Browser] -->|HTTPS| FE[Frontend: React + Vite (Azure Static Web Apps)]
-    FE -->|REST API| BE[Backend: Node.js + Express (Azure App Service)]
-    BE -->|PG Protocol| DB[(PostgreSQL Database)]
-    BE -->|JWT| Auth[Auth: JWT Secret / Key Vault]
+  User["Browser"] -->|HTTPS| FE["Frontend\nReact & Vite\nAzure Static Web Apps"]
+  FE -->|REST API| BE["Backend\nNode.js & Express\nAzure App Service"]
+  BE -->|PG protocol| DB["PostgreSQL Database"]
+  BE -->|JWT| AUTH["Auth\nJWT Secret / Key Vault"]
 ```
 
 ---
