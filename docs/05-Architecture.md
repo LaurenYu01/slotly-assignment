@@ -1,28 +1,30 @@
 mermaid
 flowchart TB
     subgraph Client
-      Browser
+      Browser[User Browser]
     end
 
-    subgraph Azure
-      FE[Frontend: React + Vite (Static Web App)]
-      BE[Backend: Node.js + Express (App Service)]
-      DB[(PostgreSQL)]
-      KV[Key Vault / Env Vars]
+    subgraph Azure["Azure Cloud (Production)"]
+      FE[Frontend: React + Vite (Azure Static Web App)]
+      BE[Backend: Node.js + Express (Azure App Service)]
+      DB[(PostgreSQL Database - Azure Flexible Server)]
+      KV[Key Vault / Environment Variables]
     end
 
+    subgraph Local["Local Development"]
+      FE_Local[React Dev Server (Vite)]
+      BE_Local[Express on localhost:3000]
+      DB_Local[(PostgreSQL Local Instance)]
+    end
+
+    %% Cloud flows
     Browser --> FE
     FE --> BE
     BE --> DB
     BE --> KV
 
-    subgraph Local
-      FE_Local[React Dev Server]
-      BE_Local[Express Localhost]
-      DB_Local[(PostgreSQL Local)]
-    end
-
+    %% Local flows
     Browser --> FE_Local
     FE_Local --> BE_Local
     BE_Local --> DB_Local
---- - Frontend uses VITE_API_BASE_URL to connect backend - Backend binds to process.env.PORT in cloud - Secrets stored in Key Vault / env vars - Health check endpoint: /health
+--- - **Frontend**: React + Vite. Connects to backend via VITE_API_BASE_URL - **Backend**: Node.js + Express. Listens on process.env.PORT in Azure App Service - **Database**: PostgreSQL (local in dev, Azure in production) - **Secrets**: Stored in Azure Key Vault or environment variables - **Health Check**: /health endpoint used for monitoring
