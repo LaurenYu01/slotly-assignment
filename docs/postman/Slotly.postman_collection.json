@@ -1,0 +1,31 @@
+{
+  "info": {
+    "name": "Slotly",
+    "_postman_id": "abcd1234",
+    "description": "Slotly API Smoke Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{API_BASE}}/health",
+          "host": [
+            "{{API_BASE}}"
+          ],
+          "path": [
+            "health"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "API_BASE",
+      "value": "http://localhost:3000"
+    }
+  ]
+}
